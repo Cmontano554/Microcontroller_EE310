@@ -12,7 +12,7 @@
 ; Compiler: xc8, 2.4
 ; Author: Cole Montano
 ; Versions:
-; V1.0: March, 8th. First Version
+; V1.1: March, 9th. Finished Version
      
 
 ;---------------------
@@ -29,8 +29,8 @@
 ;It is more flexible and can be used to define complex expressions or sequences of instructions.
 ;It is processed by the preprocessor before the assembly begins.
 
-#define  measuredTempInput 	-10 ; this is the input value
-#define  refTempInput 		10 ; this is the input value
+#define  measuredTempInput 	-5 ; this is the input value
+#define  refTempInput 		15 ; this is the input value
 
 ;---------------------
 ; Definitions
@@ -50,6 +50,8 @@
 contReg	equ	0x22
 refTemp	equ	0x20
 measuredTemp equ 0x21
+num	equ	0x59
+h	equ	0x58
 ;---------------
 ; Main Code
 ;---------------
@@ -63,34 +65,31 @@ _start:
    
     MOVLW   0xF8
     MOVWF   TRISD,0; Establihes port D0-D2 as outputs
-    
-    
-    
+    GOTO    _convert
+_continue: 
     MOVLW   refTempInput
     MOVWF   refTemp,0
     MOVLW   measuredTempInput
-    MOVWF   measuredTemp,0 
+    MOVWF   measuredTemp,0
     MOVLW   0xF0
     CPFSGT  measuredTemp,0
     BRA	    _comp
     BRA	    _elim
-; Hex to Decimal Conversion and Storage
-;-----------------------
 ; Eliminate negative numbers
 _elim:    
     NEGF    measuredTemp,0
-    MOVLW   refTempInput
-    ADDLW   1
+ 
     
 ;Compare for heating, WREG=refTemp
     
-_comp:    
+_comp: 
+    MOVLW   refTempInput
     CPFSLT  measuredTemp,0; If measured is less than ref skips to heating implementation
     BRA	    _coolcheck; If measured >= Ref skips to another check
     BRA	    _heating
     
 _coolcheck: 
-    CPFSGT  measuredTemp,0; Wreg = refTemp, is measured is greater than ref, skips to cooling implementation
+    CPFSGT  measuredTemp,0; Wreg = refTemp, if measured is greater than ref, skips to cooling implementation
     BRA	    _equalcheck
     BRA     _cooling
     
@@ -117,6 +116,89 @@ _equal:
     MOVWF   contReg,0
     MOVWF   PORTD,0
     BRA	    _end
-
+    
+_convert:
+    CLRF    h
+    MOVLW   refTempInput
+    MOVWF   num,0
+    MOVLW   0x64
+    CPFSGT  num,0; Checks if value is greater than 100d
+    GOTO    _next
+    GOTO    _hundreds
+_hundreds:
+    MOVLW   0x64
+    CPFSLT  num,0; Checks if value is less than 100d
+    GOTO    _hun
+    CLRF    h
+    GOTO    _next
+_hun:
+    MOVLW   0x64
+    SUBWF   num
+    MOVLW   0x01
+    ADDWF   h
+    GOTO    _hundreds
+_next:  
+    MOVLW   0x0A
+    CPFSLT  num,0; Checks if value is less than 10d
+    GOTO    _tens
+    GOTO    _next2   
+_tens:
+    MOVLW   0x0A
+    SUBWF   num
+    MOVLW   0x01
+    ADDWF   h
+    GOTO    _next  
+_next2:
+    MOVFF   h,0x61; Places amount of loops into tens register
+    MOVFF   num,0x60; Places remainder is ones register
+    GOTO    _meas
+_meas:
+    CLRF    h
+    MOVLW   measuredTempInput
+    MOVWF   0x40
+    MOVLW   0xF0
+    CPFSGT  0x40,0; Ensures decimal is displayed corectly even if negative
+    GOTO    _here
+    NEGF    0x40
+    MOVFF   0x40,WREG
+    MOVWF   num,0
+    GOTO    _after
+_here:
+    MOVLW   measuredTempInput; Only happens if number is posiitve
+    MOVWF   num,0
+_after:; Code reaches here always, steps before based on sign of value
+    MOVLW   0x64
+    CPFSGT  num,0; Checks if value is greater than 100d
+    GOTO    _nextm1
+    GOTO    _hundredsm
+_hundredsm:
+    MOVLW   0x64
+    CPFSLT  num,0; Checks if value is less than 100d
+    GOTO    _hunm
+    CLRF    h
+    GOTO    _nextm1
+_hunm:
+    MOVLW   0x64
+    SUBWF   num
+    MOVLW   0x01
+    ADDWF   h
+    GOTO    _hundredsm
+_nextm1:   
+    MOVLW   0x0A
+    CPFSLT  num,0; Ensures value is less than 10d
+    GOTO    _tensm
+    GOTO    _nextm2  
+_tensm:
+    MOVLW   0x0A
+    SUBWF   num
+    MOVLW   0x01
+    ADDWF   h
+    GOTO    _nextm1  
+_nextm2:
+    MOVFF   h,0x71; Places amout of tens loops into tens register
+    MOVFF   num,0x70; places remainder into ones register
+    GOTO    _continue
+    
+    
 _end:
 END

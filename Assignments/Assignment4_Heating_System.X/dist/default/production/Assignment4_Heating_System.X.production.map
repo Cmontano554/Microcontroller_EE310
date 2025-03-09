@@ -4,11 +4,12 @@ Linker command line:
 
 -W-3 \
   --edf=C:\Program Files\Microchip\xc8\v3.00\pic\dat\20241204225717_en.msgs \
-  -cs -h+dist/default/debug\Assignment4_Heating_System.X.debug.sym \
-  --cmf=dist/default/debug\Assignment4_Heating_System.X.debug.cmf -z \
-  -Q18F47K42 -oC:\Users\ender\AppData\Local\Temp\xcAs2jg.\driver_tmp_3.o \
+  -cs \
+  -h+dist/default/production\Assignment4_Heating_System.X.production.sym \
+  --cmf=dist/default/production\Assignment4_Heating_System.X.production.cmf \
+  -z -Q18F47K42 -oC:\Users\ender\AppData\Local\Temp\xcAsffs.\driver_tmp_3.o \
   --fixupoverflow=error -ver=XC8 PIC(R) Assembler --fixupoverflow=lstwarn \
-  -Mdist/default/debug/Assignment4_Heating_System.X.debug.map -E1 \
+  -Mdist/default/production/Assignment4_Heating_System.X.production.map -E1 \
   -ACODE=00h-01FFFFh -ACONST=00h-01FFFFh \
   -ASMALLCONST=02000h-020FFhx224,012000h-0120FFhx224 \
   -AMEDIUMCONST=02000h-0FFFFh,012000h-01FFFFh -ACOMRAM=00h-05Fh \
@@ -26,7 +27,7 @@ Linker command line:
   -ABANK30=01E00h-01EFFh -ABANK31=01F00h-01FFFh \
   -ASFR=03800h-038FFhx7,03F00h-03F5Fh,03F60h-03FFFh -ABIGSFR=03800h-03FFFh \
   -ACONFIG=0300000h-0300009h -AIDLOC=0200000h-020000Fh \
-  -AEEDATA=0310000h-03103FFh build/default/debug/Main.o 
+  -AEEDATA=0310000h-03103FFh build/default/production/Main.o 
 
 Object code version is 3.11
 
@@ -35,8 +36,8 @@ Machine type is 18F47K42
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-build/default/debug/Main.o
-                absdata                               0        0      128        0       0
+build/default/production/Main.o
+                absdata                               0        0      12A        0       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
@@ -130,7 +131,7 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   EEDATA         
 
         CLASS   UNCLASSED
-                absdata                               0        0      128         0
+                absdata                               0        0      12A         0
 
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
@@ -172,12 +173,12 @@ UNUSED ADDRESS RANGES
         BANK7            700-7FF           100
         BANK8            800-8FF           100
         BANK9            900-9FF           100
-        BIGRAM           128-1FFF          1ED8
+        BIGRAM           12A-1FFF          1ED6
         BIGSFR           3800-3FFF           800
-        CODE             128-1FFFF         1FED8
+        CODE             12A-1FFFF         1FED6
         COMRAM           000-05F            60
         CONFIG           300000-300009             A
-        CONST            128-1FFFF         1FED8
+        CONST            12A-1FFFF         1FED6
         EEDATA           310000-3103FF           400
         IDLOC            200000-20000F            10
         MEDIUMCONST      2000-FFFF          E000
@@ -189,9 +190,9 @@ UNUSED ADDRESS RANGES
 
                                   Symbol Table
 
-__H__absolute__ __absolute__ 000  __Habsdata      absdata      128
+__H__absolute__ __absolute__ 000  __Habsdata      absdata      12A
 __Hcode         code         000  __Hdata         data         000
-__Hedata        edata        000  __Hspace_0      (abs)        128
+__Hedata        edata        000  __Hspace_0      (abs)        12A
 __Hspace_1      (abs)        000  __Hspace_3      (abs)        000
 __Hudata        udata        000  __Hudata_acs    udata_acs    000
 __Hudata_bank0  udata_bank0  000  __Hudata_bank1  udata_bank1  000

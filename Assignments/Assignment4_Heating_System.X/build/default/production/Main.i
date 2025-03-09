@@ -19,7 +19,7 @@
 ; Compiler: xc8, 2.4
 ; Author: Cole Montano
 ; Versions:
-; V1.1: March, 9th. Finished Version
+; V1.0: March, 8th. First Version
 
 
 ;---------------------
@@ -32316,12 +32316,15 @@ _start:
 
     MOVLW 0xF8
     MOVWF TRISD,0; Establihes port D0-D2 as outputs
-    GOTO _convert
-_continue:
+
+
+
     MOVLW 15 ; this is the input value
     MOVWF refTemp,0
-    MOVLW -5 ; this is the input value
+    MOVLW 20 ; this is the input value
     MOVWF measuredTemp,0
+    GOTO _convert
+_continue:
     MOVLW 0xF0
     CPFSGT measuredTemp,0
     BRA _comp
@@ -32329,18 +32332,18 @@ _continue:
 ; Eliminate negative numbers
 _elim:
     NEGF measuredTemp,0
-
+    MOVLW 15 ; this is the input value
+    ADDLW 1
 
 ;Compare for heating, WREG=refTemp
 
 _comp:
-    MOVLW 15 ; this is the input value
     CPFSLT measuredTemp,0; If measured is less than ref skips to heating implementation
     BRA _coolcheck; If measured >= Ref skips to another check
     BRA _heating
 
 _coolcheck:
-    CPFSGT measuredTemp,0; Wreg = refTemp, if measured is greater than ref, skips to cooling implementation
+    CPFSGT measuredTemp,0; Wreg = refTemp, is measured is greater than ref, skips to cooling implementation
     BRA _equalcheck
     BRA _cooling
 
@@ -32405,7 +32408,7 @@ _next2:
     GOTO _meas
 _meas:
     CLRF h
-    MOVLW -5 ; this is the input value
+    MOVLW 20 ; this is the input value
     MOVWF 0x40
     MOVLW 0xF0
     CPFSGT 0x40,0; Ensures decimal is displayed corectly even if negative
@@ -32415,7 +32418,7 @@ _meas:
     MOVWF num,0
     GOTO _after
 _here:
-    MOVLW -5 ; this is the input value; Only happens if number is posiitve
+    MOVLW 20 ; this is the input value; Only happens if number is posiitve
     MOVWF num,0
 _after:; Code reaches here always, steps before based on sign of value
     MOVLW 0x64
