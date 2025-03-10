@@ -32282,7 +32282,7 @@ ENDM
 
 
 
-
+; Note these values are assumed to be within specified range
 ;---------------------
 ; Definitions
 ;---------------------
@@ -32318,9 +32318,9 @@ _start:
     MOVWF TRISD,0; Establihes port D0-D2 as outputs
     GOTO _convert
 _continue:
-    MOVLW 15 ; this is the input value
+    MOVLW 10; this is the input value
     MOVWF refTemp,0
-    MOVLW -5 ; this is the input value
+    MOVLW -10; this is the input value
     MOVWF measuredTemp,0
     MOVLW 0xF0
     CPFSGT measuredTemp,0
@@ -32329,12 +32329,14 @@ _continue:
 ; Eliminate negative numbers
 _elim:
     NEGF measuredTemp,0
+    MOVLW 0x01
+    ADDWF refTemp
 
 
 ;Compare for heating, WREG=refTemp
 
 _comp:
-    MOVLW 15 ; this is the input value
+    MOVLW refTemp
     CPFSLT measuredTemp,0; If measured is less than ref skips to heating implementation
     BRA _coolcheck; If measured >= Ref skips to another check
     BRA _heating
@@ -32370,7 +32372,7 @@ _equal:
 
 _convert:
     CLRF h
-    MOVLW 15 ; this is the input value
+    MOVLW 10; this is the input value
     MOVWF num,0
     MOVLW 0x64
     CPFSGT num,0; Checks if value is greater than 100d
@@ -32405,7 +32407,7 @@ _next2:
     GOTO _meas
 _meas:
     CLRF h
-    MOVLW -5 ; this is the input value
+    MOVLW -10; this is the input value
     MOVWF 0x40
     MOVLW 0xF0
     CPFSGT 0x40,0; Ensures decimal is displayed corectly even if negative
@@ -32415,7 +32417,7 @@ _meas:
     MOVWF num,0
     GOTO _after
 _here:
-    MOVLW -5 ; this is the input value; Only happens if number is posiitve
+    MOVLW -10; this is the input value; Only happens if number is posiitve
     MOVWF num,0
 _after:; Code reaches here always, steps before based on sign of value
     MOVLW 0x64
@@ -32449,7 +32451,6 @@ _nextm2:
     MOVFF h,0x71; Places amout of tens loops into tens register
     MOVFF num,0x70; places remainder into ones register
     GOTO _continue
-
 
 _end:
 END

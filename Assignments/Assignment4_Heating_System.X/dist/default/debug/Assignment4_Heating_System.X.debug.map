@@ -6,7 +6,7 @@ Linker command line:
   --edf=C:\Program Files\Microchip\xc8\v3.00\pic\dat\20241204225717_en.msgs \
   -cs -h+dist/default/debug\Assignment4_Heating_System.X.debug.sym \
   --cmf=dist/default/debug\Assignment4_Heating_System.X.debug.cmf -z \
-  -Q18F47K42 -oC:\Users\ender\AppData\Local\Temp\xcAs2jg.\driver_tmp_3.o \
+  -Q18F47K42 -oC:\Users\ender\AppData\Local\Temp\xcAs3f4.\driver_tmp_3.o \
   --fixupoverflow=error -ver=XC8 PIC(R) Assembler --fixupoverflow=lstwarn \
   -Mdist/default/debug/Assignment4_Heating_System.X.debug.map -E1 \
   -ACODE=00h-01FFFFh -ACONST=00h-01FFFFh \
@@ -36,7 +36,7 @@ Machine type is 18F47K42
 
                 Name                               Link     Load   Length Selector   Space Scale
 build/default/debug/Main.o
-                absdata                               0        0      128        0       0
+                absdata                               0        0      12C        0       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
@@ -130,7 +130,7 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   EEDATA         
 
         CLASS   UNCLASSED
-                absdata                               0        0      128         0
+                absdata                               0        0      12C         0
 
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
@@ -172,12 +172,12 @@ UNUSED ADDRESS RANGES
         BANK7            700-7FF           100
         BANK8            800-8FF           100
         BANK9            900-9FF           100
-        BIGRAM           128-1FFF          1ED8
+        BIGRAM           12C-1FFF          1ED4
         BIGSFR           3800-3FFF           800
-        CODE             128-1FFFF         1FED8
+        CODE             12C-1FFFF         1FED4
         COMRAM           000-05F            60
         CONFIG           300000-300009             A
-        CONST            128-1FFFF         1FED8
+        CONST            12C-1FFFF         1FED4
         EEDATA           310000-3103FF           400
         IDLOC            200000-20000F            10
         MEDIUMCONST      2000-FFFF          E000
@@ -189,9 +189,9 @@ UNUSED ADDRESS RANGES
 
                                   Symbol Table
 
-__H__absolute__ __absolute__ 000  __Habsdata      absdata      128
+__H__absolute__ __absolute__ 000  __Habsdata      absdata      12C
 __Hcode         code         000  __Hdata         data         000
-__Hedata        edata        000  __Hspace_0      (abs)        128
+__Hedata        edata        000  __Hspace_0      (abs)        12C
 __Hspace_1      (abs)        000  __Hspace_3      (abs)        000
 __Hudata        udata        000  __Hudata_acs    udata_acs    000
 __Hudata_bank0  udata_bank0  000  __Hudata_bank1  udata_bank1  000

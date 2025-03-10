@@ -12,7 +12,7 @@
 ; Compiler: xc8, 2.4
 ; Author: Cole Montano
 ; Versions:
-; V1.1: March, 9th. Finished Version
+; V1.2: March, 10th. Final Version
      
 
 ;---------------------
@@ -29,9 +29,9 @@
 ;It is more flexible and can be used to define complex expressions or sequences of instructions.
 ;It is processed by the preprocessor before the assembly begins.
 
-#define  measuredTempInput 	-5 ; this is the input value
-#define  refTempInput 		15 ; this is the input value
-
+#define  measuredTempInput 	-10; this is the input value
+#define  refTempInput 		10; this is the input value
+; Note these values are assumed to be within specified range
 ;---------------------
 ; Definitions
 ;---------------------
@@ -78,12 +78,14 @@ _continue:
 ; Eliminate negative numbers
 _elim:    
     NEGF    measuredTemp,0
+    MOVLW   0x01
+    ADDWF   refTemp
  
     
 ;Compare for heating, WREG=refTemp
     
 _comp: 
-    MOVLW   refTempInput
+    MOVLW   refTemp
     CPFSLT  measuredTemp,0; If measured is less than ref skips to heating implementation
     BRA	    _coolcheck; If measured >= Ref skips to another check
     BRA	    _heating
@@ -198,7 +200,6 @@ _nextm2:
     MOVFF   h,0x71; Places amout of tens loops into tens register
     MOVFF   num,0x70; places remainder into ones register
     GOTO    _continue
-    
-    
+   
 _end:
 END
