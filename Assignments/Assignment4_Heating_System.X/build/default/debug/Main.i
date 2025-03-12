@@ -19,7 +19,7 @@
 ; Compiler: xc8, 2.4
 ; Author: Cole Montano
 ; Versions:
-; V1.1: March, 9th. Finished Version
+; V1.2: March, 10th. Final Version
 
 
 ;---------------------
@@ -32318,9 +32318,9 @@ _start:
     MOVWF TRISD,0; Establihes port D0-D2 as outputs
     GOTO _convert
 _continue:
-    MOVLW 10; this is the input value
+    MOVLW 14; this is the input value
     MOVWF refTemp,0
-    MOVLW -10; this is the input value
+    MOVLW 14; this is the input value
     MOVWF measuredTemp,0
     MOVLW 0xF0
     CPFSGT measuredTemp,0
@@ -32336,20 +32336,15 @@ _elim:
 ;Compare for heating, WREG=refTemp
 
 _comp:
-    MOVLW refTemp
-    CPFSLT measuredTemp,0; If measured is less than ref skips to heating implementation
-    BRA _coolcheck; If measured >= Ref skips to another check
-    BRA _heating
+    MOVFF refTemp,WREG
+    CPFSLT 0x21,0; If measured is less than ref skips to heating implementation
+    GOTO _coolcheck
+    GOTO _heating
 
 _coolcheck:
-    CPFSGT measuredTemp,0; Wreg = refTemp, if measured is greater than ref, skips to cooling implementation
-    BRA _equalcheck
-    BRA _cooling
-
-_equalcheck:
-    CPFSEQ measuredTemp,0; Wreg = refTemp, if they are equal goes to equal value implementaion
-    BRA _start
+    CPFSGT 0x21,0; Wreg = refTemp, if measured is greater than ref, skips to cooling implementation
     BRA _equal
+    BRA _cooling
 
 _heating:
     MOVLW 0x02
@@ -32372,7 +32367,7 @@ _equal:
 
 _convert:
     CLRF h
-    MOVLW 10; this is the input value
+    MOVLW 14; this is the input value
     MOVWF num,0
     MOVLW 0x64
     CPFSGT num,0; Checks if value is greater than 100d
@@ -32407,7 +32402,7 @@ _next2:
     GOTO _meas
 _meas:
     CLRF h
-    MOVLW -10; this is the input value
+    MOVLW 14; this is the input value
     MOVWF 0x40
     MOVLW 0xF0
     CPFSGT 0x40,0; Ensures decimal is displayed corectly even if negative
@@ -32417,7 +32412,7 @@ _meas:
     MOVWF num,0
     GOTO _after
 _here:
-    MOVLW -10; this is the input value; Only happens if number is posiitve
+    MOVLW 14; this is the input value; Only happens if number is posiitve
     MOVWF num,0
 _after:; Code reaches here always, steps before based on sign of value
     MOVLW 0x64

@@ -29,8 +29,8 @@
 ;It is more flexible and can be used to define complex expressions or sequences of instructions.
 ;It is processed by the preprocessor before the assembly begins.
 
-#define  measuredTempInput 	-10; this is the input value
-#define  refTempInput 		10; this is the input value
+#define  measuredTempInput 	14; this is the input value
+#define  refTempInput 		14; this is the input value
 ; Note these values are assumed to be within specified range
 ;---------------------
 ; Definitions
@@ -85,20 +85,15 @@ _elim:
 ;Compare for heating, WREG=refTemp
     
 _comp: 
-    MOVLW   refTemp
-    CPFSLT  measuredTemp,0; If measured is less than ref skips to heating implementation
-    BRA	    _coolcheck; If measured >= Ref skips to another check
-    BRA	    _heating
+    MOVFF   refTemp,WREG
+    CPFSLT  0x21,0; If measured is less than ref skips to heating implementation
+    GOTO    _coolcheck
+    GOTO    _heating
     
 _coolcheck: 
-    CPFSGT  measuredTemp,0; Wreg = refTemp, if measured is greater than ref, skips to cooling implementation
-    BRA	    _equalcheck
-    BRA     _cooling
-    
-_equalcheck:
-    CPFSEQ  measuredTemp,0; Wreg = refTemp, if they are equal goes to equal value implementaion
-    BRA	    _start
+    CPFSGT  0x21,0; Wreg = refTemp, if measured is greater than ref, skips to cooling implementation
     BRA	    _equal
+    BRA     _cooling
     
 _heating:
     MOVLW   0x02
