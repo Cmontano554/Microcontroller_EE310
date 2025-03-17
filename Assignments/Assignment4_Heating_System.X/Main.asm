@@ -29,8 +29,8 @@
 ;It is more flexible and can be used to define complex expressions or sequences of instructions.
 ;It is processed by the preprocessor before the assembly begins.
 
-#define  measuredTempInput 	14; this is the input value
-#define  refTempInput 		14; this is the input value
+#define  measuredTempInput 	11; this is the input value
+#define  refTempInput 		11; this is the input value
 ; Note these values are assumed to be within specified range
 ;---------------------
 ; Definitions
