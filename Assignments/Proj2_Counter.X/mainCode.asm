@@ -11,13 +11,15 @@
 ; Outputs: PORTD, 0-7
 
     
-; Date: March 17, 2025
+; Date: March 25, 2025
 ; File Dependencies / Libraries: It is required to include the 
 ;   AssemblyConfig.inc in the Header Folder
 ; Compiler: xc8, 2.4
 ; Author: Cole Montano
 ; Versions:
-;       V1.2: Button Functionality Works
+;       V1.3: Updated Delay Configuration to avoid
+;		accidenttle "floating" changes
+		
 ; Useful links: 
 ;       Datasheet: https://ww1.microchip.com/downloads/en/DeviceDoc/PIC18(L)F26-27-45-46-47-55-56-57K42-Data-Sheet-40001919G.pdf 
 
@@ -43,6 +45,7 @@
     CLRF    DIGIT
   
  _CHECK: ; Checks if one of the buttons is pressed, both are pressed and neither are pressed
+    CALL    _DELAY
     BTFSS   PORTB,0
     GOTO    _DOUBLE
     BTFSS   PORTB,1
@@ -87,20 +90,20 @@ _DELAY:
     MOVWF   0x10
     MOVLW   0xFF
     MOVWF   0x11
-    MOVLW   0x03
+    MOVLW   0x02
     MOVWF   0x12
 _loop:
-    DECF        0x10,1
+    DECF        0x10
     BNZ         _loop
     MOVLW       0xFF 
     MOVWF       0x10
-    DECF        0x11,1 
+    DECF        0x11 
     BNZ        _loop
     MOVLW	0xFF
     MOVWF	0x10
     MOVLW	0xFF
     MOVWF	0x11
-    DECF	0x12,1
+    DECF	0x12
     BNZ		_loop
     RETURN
     

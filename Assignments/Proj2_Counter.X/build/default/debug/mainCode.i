@@ -18,13 +18,15 @@
 ; Outputs: PORTD, 0-7
 
 
-; Date: March 17, 2025
+; Date: March 25, 2025
 ; File Dependencies / Libraries: It is required to include the
 ; AssemblyConfig.inc in the Header Folder
 ; Compiler: xc8, 2.4
 ; Author: Cole Montano
 ; Versions:
-; V1.2: Button Functionality Works
+; V1.3: Updated Delay Configuration to avoid
+; accidenttle "floating" changes
+
 ; Useful links:
 ; Datasheet: https:
 
@@ -32273,7 +32275,7 @@ stk_offset SET 0
 auto_size SET 0
 ENDM
 # 6 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.inc" 2 3
-# 26 "mainCode.asm" 2
+# 28 "mainCode.asm" 2
 # 1 "././myConfigFile.inc" 1
 
 ;---------------------
@@ -32333,14 +32335,14 @@ ENDM
 
 
 ; config statements should precede project file includes.
-# 27 "mainCode.asm" 2
+# 29 "mainCode.asm" 2
  PSECT absdata,abs,ovrld
     ORG 0x00
     RCALL _setupPortD
     RCALL _setupPortB
-    DIGIT equ 0x1E
+    DIGIT equ 0x1E; Used to ensure tablepointer is looking at correct spot
 
-    ORG 0x20
+    ORG 0x20 ; Initiliazes table pointer value and clear DIGIT
     CLRF TBLPTRL
     MOVLW 0x3F
     MOVWF PORTD,0
@@ -32352,14 +32354,15 @@ ENDM
     MOVWF TBLPTRL
     CLRF DIGIT
 
- _CHECK:
+ _CHECK: ; Checks if one of the buttons is pressed, both are pressed and neither are pressed
+    CALL _DELAY
     BTFSS PORTB,0
     GOTO _DOUBLE
     BTFSS PORTB,1
     GOTO _DOUBLE
     GOTO _CHECK
 
-_DOUBLE:
+_DOUBLE: ; Makes sure if both buttons are pressed it clear the display
     BTFSC PORTB,0
     GOTO _UPC
     BTFSC PORTB,1
@@ -32367,7 +32370,7 @@ _DOUBLE:
     CLRF DIGIT
     GOTO _DISPLAY
 _UPC:
-    MOVLW 0x02
+    MOVLW 0x02 ; Must move two addresses to properly display digits
     ADDWF DIGIT
     MOVLW 0x1E
     CPFSGT DIGIT
@@ -32375,7 +32378,7 @@ _UPC:
     CLRF DIGIT
     GOTO _DISPLAY
 _DOWNC:
-    MOVLW 0x02
+    MOVLW 0x02; Must move two addresses to properly display digits
     SUBWF DIGIT
     MOVLW 0xFE
     CPFSEQ DIGIT
@@ -32386,31 +32389,31 @@ _DOWNC:
 
 
 _DISPLAY:
-    MOVFF DIGIT, TBLPTRL
-    TBLRD*
+    MOVFF DIGIT, TBLPTRL ; Increases the table pointer to look at the required value
+    TBLRD* ; Reads from seven segment table
     MOVFF TABLAT, PORTD
-    CALL _DELAY
-    GOTO _CHECK
+    CALL _DELAY ; Calls to the delay loop
+    GOTO _CHECK ; Goes back to start to continue the loops
 
 _DELAY:
     MOVLW 0xFF
     MOVWF 0x10
     MOVLW 0xFF
     MOVWF 0x11
-    MOVLW 0x03
+    MOVLW 0x02
     MOVWF 0x12
 _loop:
-    DECF 0x10,1
+    DECF 0x10
     BNZ _loop
-    MOVLW 0xFF ; Re-initialize the inner loop for when the outer loop decrements.
+    MOVLW 0xFF
     MOVWF 0x10
-    DECF 0x11,1
+    DECF 0x11
     BNZ _loop
     MOVLW 0xFF
     MOVWF 0x10
     MOVLW 0xFF
     MOVWF 0x11
-    DECF 0x12,1
+    DECF 0x12
     BNZ _loop
     RETURN
 
@@ -32443,7 +32446,7 @@ _setupPortD:
     RETURN
 
 
-ORG 0x00A00
+ORG 0x00A00; Organized away from main code
     SEVENSEG_TABLE:
     RETLW 0x3F ; 0
     RETLW 0x06 ; 1
