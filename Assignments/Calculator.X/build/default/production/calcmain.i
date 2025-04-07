@@ -27474,6 +27474,7 @@ unsigned char button;
 int a;
 int b;
 int c;
+int d;
 
 
 void initialize();
@@ -27487,27 +27488,34 @@ void solve();
 
 void main (void) {
     while (1) {
+        start:
         initialize();
         check_keypad();
+        if (d == 1) goto start;
         x_reg = x_reg + (button*10);
-
+        _delay((unsigned long)((500)*(4000000/4000.0)));
         check_keypad();
+        if (d == 1) goto start;
         x_reg = x_reg + button;
         PORTDbits.RD0 = 1;
         op();
+        if (d == 1) goto start;
         check_keypad();
+        if (d == 1) goto start;
         y_reg = y_reg + (button*10);
-
+        _delay((unsigned long)((500)*(4000000/4000.0)));
         check_keypad();
+        if (d == 1) goto start;
         y_reg = y_reg + button;
         PORTDbits.RD0 = 0;
         PORTDbits.RD1 = 1;
         solve();
+        if (d == 1) goto start;
         PORTDbits.RD1 = 0;
         PORTD = display_reg;
         _delay((unsigned long)((5000)*(4000000/4000.0)));
     }
-
+    return;
 }
 
 
@@ -27522,6 +27530,7 @@ void initialize() {
     a = 0;
     b = 0;
     c = 0;
+    d = 0;
     button = 0;
 
 
@@ -27549,22 +27558,23 @@ void check_keypad() {
     button = 0;
     while (a<1) {
         PORTBbits.RB0 = 1;
-        if (PORTBbits.RB4 == 1) button = 1, a = a+1;
-        else if (PORTBbits.RB5 == 1) button = 4, a = a+1;
-        else if (PORTBbits.RB6 == 1) button = 7, a = a+1;
+        if (PORTBbits.RB4 == 1) button = 1, a = a+1, _delay((unsigned long)((1)*(4000000/4000.0)));
+        else if (PORTBbits.RB5 == 1) button = 4, a = a+1, _delay((unsigned long)((1)*(4000000/4000.0)));
+        else if (PORTBbits.RB6 == 1) button = 7, a = a+1, _delay((unsigned long)((1)*(4000000/4000.0)));
+        else if (PORTBbits.RB7 == 1) d = d + 1, a = a + 1, _delay((unsigned long)((1)*(4000000/4000.0)));
         PORTBbits.RB0 = 0;
 
         PORTBbits.RB1 = 1;
-        if (PORTBbits.RB4 == 1) button = 2, a = a+1;
-        else if (PORTBbits.RB5 == 1) button = 5, a = a+1;
-        else if (PORTBbits.RB6 == 1) button = 8, a = a+1;
-        else if (PORTBbits.RB7 == 1) button = 0, a = a+1;
+        if (PORTBbits.RB4 == 1) button = 2, a = a+1, _delay((unsigned long)((1)*(4000000/4000.0)));
+        else if (PORTBbits.RB5 == 1) button = 5, a = a+1, _delay((unsigned long)((1)*(4000000/4000.0)));
+        else if (PORTBbits.RB6 == 1) button = 8, a = a+1, _delay((unsigned long)((1)*(4000000/4000.0)));
+        else if (PORTBbits.RB7 == 1) button = 0, a = a+1, _delay((unsigned long)((1)*(4000000/4000.0)));
         PORTBbits.RB1 = 0;
 
         PORTBbits.RB2 = 1;
-        if (PORTBbits.RB4 == 1) button = 3, a = a+1;
-        else if (PORTBbits.RB5 == 1) button = 6, a = a+1;
-        else if (PORTBbits.RB6 == 1) button = 9, a = a+1;
+        if (PORTBbits.RB4 == 1) button = 3, a = a+1, _delay((unsigned long)((1)*(4000000/4000.0)));
+        else if (PORTBbits.RB5 == 1) button = 6, a = a+1, _delay((unsigned long)((1)*(4000000/4000.0)));
+        else if (PORTBbits.RB6 == 1) button = 9, a = a+1, _delay((unsigned long)((1)*(4000000/4000.0)));
         PORTBbits.RB2 = 0;
 
     }
@@ -27580,6 +27590,10 @@ void op() {
         else if (PORTBbits.RB6 == 1) op_reg = 3, b = b+1;
         else if (PORTBbits.RB7 == 1) op_reg = 4, b = b+1;
         PORTBbits.RB3 = 0;
+
+        PORTBbits.RB0 = 1;
+        if (PORTBbits.RB7 == 1) d = d+ 1, b = b +1;
+        PORTBbits.RB0 = 0;
     }
 
 }
@@ -27589,10 +27603,15 @@ void solve() {
     while (c<1) {
         PORTBbits.RB2 = 1;
         if (PORTBbits.RB7 == 1) c = c+1;
+        PORTBbits.RB2 = 0;
+
+        PORTBbits.RB0 = 1;
+        if (PORTBbits.RB7 == 1) d = d + 1, c = c +1;
+        PORTBbits.RB0 = 0;
     }
     if (op_reg == 1) display_reg = (x_reg + y_reg);
-    else if (op_reg == 2) display_reg = (x_reg - y_reg)+1;
+    else if (op_reg == 2) display_reg = (x_reg - y_reg);
     else if (op_reg == 3) display_reg = (x_reg * y_reg);
     else if (op_reg == 4) display_reg = (x_reg/y_reg);
-    PORTBbits.RB2 = 0;
+
 }

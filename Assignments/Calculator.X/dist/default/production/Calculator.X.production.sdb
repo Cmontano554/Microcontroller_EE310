@@ -29,19 +29,19 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"42 C:\Users\ender\MPLABXProjects\Calculator.X\calcmain.c
+"43 C:\Users\ender\MPLABXProjects\Calculator.X\calcmain.c
 [v _main main `(v  1 e 1 0 ]
-"68
+"76
 [v _initialize initialize `(v  1 e 1 0 ]
-"85
+"94
 [v _setupB setupB `(v  1 e 1 0 ]
-"92
-[v _setupD setupD `(v  1 e 1 0 ]
 "101
+[v _setupD setupD `(v  1 e 1 0 ]
+"110
 [v _check_keypad check_keypad `(v  1 e 1 0 ]
-"127
+"137
 [v _op op `(v  1 e 1 0 ]
-"141
+"155
 [v _solve solve `(v  1 e 1 0 ]
 "8513 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc/pic18f47k42.h
 [v _ANSELB ANSELB `VEuc  1 e 1 @14928 ]
@@ -73,7 +73,7 @@
 [v _PORTBbits PORTBbits `VES92  1 e 1 @16331 ]
 "46942
 [v _PORTD PORTD `VEuc  1 e 1 @16333 ]
-[s S32 . 1 `uc 1 RD0 1 0 :1:0 
+[s S38 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -83,10 +83,10 @@
 `uc 1 RD7 1 0 :1:7 
 ]
 "46959
-[u S41 . 1 `S32 1 . 1 0 ]
+[u S47 . 1 `S38 1 . 1 0 ]
 "46959
 "46959
-[v _PORTDbits PORTDbits `VES41  1 e 1 @16333 ]
+[v _PORTDbits PORTDbits `VES47  1 e 1 @16333 ]
 "21 C:\Users\ender\MPLABXProjects\Calculator.X\calcmain.c
 [v _x_reg x_reg `i  1 e 2 @1 ]
 "22
@@ -103,15 +103,17 @@
 [v _b b `i  1 e 2 0 ]
 "30
 [v _c c `i  1 e 2 0 ]
-"42
+"31
+[v _d d `i  1 e 2 0 ]
+"43
 [v _main main `(v  1 e 1 0 ]
 {
-"65
+"73
 } 0
-"141
+"155
 [v _solve solve `(v  1 e 1 0 ]
 {
-"152
+"171
 } 0
 "7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -126,28 +128,28 @@
 [v ___awdiv@divisor divisor `i  1 p 2 2 ]
 "41
 } 0
-"127 C:\Users\ender\MPLABXProjects\Calculator.X\calcmain.c
+"137 C:\Users\ender\MPLABXProjects\Calculator.X\calcmain.c
 [v _op op `(v  1 e 1 0 ]
 {
-"139
+"153
 } 0
-"68
+"76
 [v _initialize initialize `(v  1 e 1 0 ]
 {
-"82
-} 0
-"92
-[v _setupD setupD `(v  1 e 1 0 ]
-{
-"97
-} 0
-"85
-[v _setupB setupB `(v  1 e 1 0 ]
-{
-"90
+"91
 } 0
 "101
+[v _setupD setupD `(v  1 e 1 0 ]
+{
+"106
+} 0
+"94
+[v _setupB setupB `(v  1 e 1 0 ]
+{
+"99
+} 0
+"110
 [v _check_keypad check_keypad `(v  1 e 1 0 ]
 {
-"125
+"135
 } 0
