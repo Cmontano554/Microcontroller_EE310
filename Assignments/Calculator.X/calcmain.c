@@ -3,7 +3,12 @@
  * Author: Cole Montano
  *
  * Created on April 5, 2025, 3:20 PM
- * Version 1.0
+ * Version 2.0: Final Version Created April 8, 2025
+ * Keypad Interface: Columns: RB0 - RB3 and Rows RB4-RB7
+ * LED Outputs: RD0 - RD7, RD7 is MSB and RD0 is LSB
+ * Compiler: Xc8 Version 3.0
+ *Purpose: Takes two digit decimal inputs from an external keypad to perform arithmetic operations, including 
+ * addition, subtraction, multiplication, and division. Displays values on 8 LEDS
  */
 
 #include <xc.h>
