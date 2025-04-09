@@ -78,7 +78,7 @@ void main (void) {
         if (d == 1) goto start;
         PORTDbits.RD1 = 0;
         PORTD = display_reg;
-        __delay_ms(5000); //10 Second delay to view result      
+       check_keypad();    
     }
     return;
 }
