@@ -1,9 +1,20 @@
 /* 
- * File:   calcmain.c
- * Author: Cole Montano
+ * -------------------------------------------------
+ * Title: LED Display Binary Calculator
+ * -------------------------------------------------
+ * Purpose: To implement a calculator using a 4x4 matrix keypad to display a binary value on 
+ * LEDS using a PIC18F47K42 microcontroller using the C coding language. The calculator performs the four basic arithmetic operations:
+ * addition, subtraction, multiplication, and division.
  *
- * Created on April 5, 2025, 3:20 PM
- * Version 1.0
+ * Outputs: PORTD [0:7], controls the output LEDS
+ *          PORTB [0:3], controls the columns of the KEYPAD
+ * Inputs:  PORTB [4:7], takes input from KEYPAD rows
+ * Dependency: Configuration header
+ * Compiler: MPLAB X IDE v6.20; XC8, V3.0
+ * Author: Cole Montano
+ * Versions: 1.0 Created on 4/5/2025 - Wrote Functions and Main Code Body
+ *           1.1 Created on 4/6/2025 - Corrected Issue with Double Inputs, Created Reset at All Stages
+ *           1.2 Created on 4/8/2025 - Finished Header and Reset Function
  */
 
 #include <xc.h>
@@ -67,7 +78,7 @@ void main (void) {
         if (d == 1) goto start;
         PORTDbits.RD1 = 0;
         PORTD = display_reg;
-        __delay_ms(5000); //10 Second delay to view result      
+       check_keypad();    
     }
     return;
 }
