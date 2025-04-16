@@ -1,0 +1,194 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F47K42 ]
+[d frameptr 16353 ]
+"17 C:\Users\ender\MPLABXProjects\Sensors.X/functions.h
+[v _INT0_ISR INT0_ISR `IIH(v  1 e 1 0 ]
+"39
+[v _check check `(v  1 e 1 0 ]
+"3 C:\Users\ender\MPLABXProjects\Sensors.X/Initialize.h
+[v _initialize initialize `(v  1 e 1 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"23 C:\Users\ender\MPLABXProjects\Sensors.X\SensorsMain.c
+[v _main main `(v  1 e 1 0 ]
+"9 C:\Users\ender\MPLABXProjects\Sensors.X/functions.h
+[v _input input `i  1 e 2 0 ]
+"10
+[v _count count `i  1 e 2 0 ]
+"11
+[v _seg_code seg_code `C[4]uc  1 e 4 @512 ]
+"12
+[v _x x `i  1 e 2 0 ]
+"13
+[v _y y `i  1 e 2 0 ]
+[s S62 . 1 `uc 1 INT0IP 1 0 :1:0 
+`uc 1 ZCDIP 1 0 :1:1 
+`uc 1 ADIP 1 0 :1:2 
+`uc 1 ADTIP 1 0 :1:3 
+`uc 1 C1IP 1 0 :1:4 
+`uc 1 SMT1IP 1 0 :1:5 
+`uc 1 SMT1PRAIP 1 0 :1:6 
+`uc 1 SMT1PWAIP 1 0 :1:7 
+]
+"2844 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc/pic18f47k42.h
+[u S71 . 1 `S62 1 . 1 0 ]
+[v _IPR1bits IPR1bits `VES71  1 e 1 @14721 ]
+[s S83 . 1 `uc 1 INT0IE 1 0 :1:0 
+`uc 1 ZCDIE 1 0 :1:1 
+`uc 1 ADIE 1 0 :1:2 
+`uc 1 ADTIE 1 0 :1:3 
+`uc 1 C1IE 1 0 :1:4 
+`uc 1 SMT1IE 1 0 :1:5 
+`uc 1 SMT1PRAIE 1 0 :1:6 
+`uc 1 SMT1PWAIE 1 0 :1:7 
+]
+"3409
+[u S92 . 1 `S83 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES92  1 e 1 @14737 ]
+[s S104 . 1 `uc 1 INT0IF 1 0 :1:0 
+`uc 1 ZCDIF 1 0 :1:1 
+`uc 1 ADIF 1 0 :1:2 
+`uc 1 ADTIF 1 0 :1:3 
+`uc 1 C1IF 1 0 :1:4 
+`uc 1 SMT1IF 1 0 :1:5 
+`uc 1 SMT1PRAIF 1 0 :1:6 
+`uc 1 SMT1PWAIF 1 0 :1:7 
+]
+"3974
+[u S113 . 1 `S104 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES113  1 e 1 @14753 ]
+[s S125 . 1 `uc 1 INT1IF 1 0 :1:0 
+`uc 1 C2IF 1 0 :1:1 
+`uc 1 DMA2SCNTIF 1 0 :1:2 
+`uc 1 DMA2DCNTIF 1 0 :1:3 
+`uc 1 DMA2ORIF 1 0 :1:4 
+`uc 1 DMA2AIF 1 0 :1:5 
+`uc 1 I2C2RXIF 1 0 :1:6 
+`uc 1 I2C2TXIF 1 0 :1:7 
+]
+"4217
+[u S134 . 1 `S125 1 . 1 0 ]
+[v _PIR5bits PIR5bits `VES134  1 e 1 @14757 ]
+"8017
+[v _ANSELA ANSELA `VEuc  1 e 1 @14912 ]
+"8513
+[v _ANSELB ANSELB `VEuc  1 e 1 @14928 ]
+"8575
+[v _WPUB WPUB `VEuc  1 e 1 @14929 ]
+"9937
+[v _ANSELD ANSELD `VEuc  1 e 1 @14960 ]
+"45976
+[v _LATA LATA `VEuc  1 e 1 @16314 ]
+"46088
+[v _LATB LATB `VEuc  1 e 1 @16315 ]
+"46312
+[v _LATD LATD `VEuc  1 e 1 @16317 ]
+"46476
+[v _TRISA TRISA `VEuc  1 e 1 @16322 ]
+"46538
+[v _TRISB TRISB `VEuc  1 e 1 @16323 ]
+"46662
+[v _TRISD TRISD `VEuc  1 e 1 @16325 ]
+"46756
+[v _PORTA PORTA `VEuc  1 e 1 @16330 ]
+[s S150 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"46773
+[u S159 . 1 `S150 1 . 1 0 ]
+"46773
+"46773
+[v _PORTAbits PORTAbits `VES159  1 e 1 @16330 ]
+"46818
+[v _PORTB PORTB `VEuc  1 e 1 @16331 ]
+[s S177 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"46835
+[u S186 . 1 `S177 1 . 1 0 ]
+"46835
+"46835
+[v _PORTBbits PORTBbits `VES186  1 e 1 @16331 ]
+"46942
+[v _PORTD PORTD `VEuc  1 e 1 @16333 ]
+[s S36 . 1 `uc 1 INT0EDG 1 0 :1:0 
+`uc 1 INT1EDG 1 0 :1:1 
+`uc 1 INT2EDG 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 IPEN 1 0 :1:5 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"47062
+[s S44 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 GIEH 1 0 :1:7 
+]
+"47062
+[u S47 . 1 `S36 1 . 1 0 `S44 1 . 1 0 ]
+"47062
+"47062
+[v _INTCON0bits INTCON0bits `VES47  1 e 1 @16338 ]
+"47167
+[v _IVTBASEL IVTBASEL `VEuc  1 e 1 @16341 ]
+"47229
+[v _IVTBASEH IVTBASEH `VEuc  1 e 1 @16342 ]
+"47291
+[v _IVTBASEU IVTBASEU `VEuc  1 e 1 @16343 ]
+"23 C:\Users\ender\MPLABXProjects\Sensors.X\SensorsMain.c
+[v _main main `(v  1 e 1 0 ]
+{
+"28
+} 0
+"3 C:\Users\ender\MPLABXProjects\Sensors.X/Initialize.h
+[v _initialize initialize `(v  1 e 1 0 ]
+{
+"55
+} 0
+"39 C:\Users\ender\MPLABXProjects\Sensors.X/functions.h
+[v _check check `(v  1 e 1 0 ]
+{
+"92
+} 0
+"17
+[v _INT0_ISR INT0_ISR `IIH(v  1 e 1 0 ]
+{
+"22
+[v INT0_ISR@i i `i  1 a 2 2 ]
+"37
+} 0
