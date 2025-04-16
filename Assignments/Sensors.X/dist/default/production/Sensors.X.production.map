@@ -7,10 +7,10 @@ Linker command line:
   -pivt0x4008=04008h -cn \
   -h+dist/default/production\Sensors.X.production.sym \
   --cmf=dist/default/production\Sensors.X.production.cmf -z -Q18F47K42 \
-  -oC:\Users\ender\AppData\Local\Temp\xcAsh0o.\driver_tmp_3.o \
+  -oC:\Users\ender\AppData\Local\Temp\xcAsml4.\driver_tmp_3.o \
   --defsym=__MPLAB_BUILD=1 --fixupoverflow=error \
   -Mdist/default/production/Sensors.X.production.map \
-  --md=C:\Users\ender\AppData\Local\Temp\xcAsh0o.\driver_tmp_0.dat -E1 \
+  --md=C:\Users\ender\AppData\Local\Temp\xcAsml4.\driver_tmp_0.dat -E1 \
   -ver=XC8 Compiler -p_seg_code_text=200h -ACODE=00h-01FFFFh \
   -ACONST=00h-01FFFFh -ASMALLCONST=02000h-020FFhx224,012000h-0120FFhx224 \
   -AMEDIUMCONST=02000h-0FFFFh,012000h-01FFFFh -ACOMRAM=01h-05Fh \
@@ -35,7 +35,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\ender\AppData\Local\Temp\xcAsh0o.\driver_tmp_9.o \
+  C:\Users\ender\AppData\Local\Temp\xcAsml4.\driver_tmp_9.o \
   dist/default/production\Sensors.X.production.o 
 
 Object code version is 3.11
@@ -45,7 +45,7 @@ Machine type is 18F47K42
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\ender\AppData\Local\Temp\xcAsh0o.\driver_tmp_9.o
+C:\Users\ender\AppData\Local\Temp\xcAsml4.\driver_tmp_9.o
                 config                           300000   300000        A        0       4
                 init                               40AE     40AE        4     2004       0
                 reset_vec                             0        0        4        0       0
@@ -53,29 +53,29 @@ dist/default/production\Sensors.X.production.o
                 config                           300000   300000        A        0       4
                 smallconst                         2000     2000        2     1000       0
                 ivt0x4008                          4008     4008       A6     2004       0
-                text3                              42D4     42D4       98     2004       0
-                text2                              40B2     40B2      222     2004       0
-                text1                              436C     436C       40     2004       0
-                text0                              43EA     43EA        C     2004       0
+                text3                              42C4     42C4       98     2004       0
+                text2                              40B2     40B2      212     2004       0
+                text1                              435C     435C       40     2004       0
+                text0                              43DA     43DA        C     2004       0
                 cstackCOMRAM                          9        9        6        1       1
                 dataCOMRAM                            F        F        2        1       1
                 bssCOMRAM                             1        1        8        1       1
-                cinit                              43AC     43AC       3E     2004       0
+                cinit                              439C     439C       3E     2004       0
                 _seg_code_text                      200      200        4      100       0
-                idataCOMRAM                        43F6     43F6        2     2004       0
+                idataCOMRAM                        43E6     43E6        2     2004       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
                 init                               40AE     40AE        4         0
                 reset_vec                             0        0        4         0
                 ivt0x4008                          4008     4008       A6         0
-                text3                              42D4     42D4       98         0
-                text2                              40B2     40B2      222         0
-                text1                              436C     436C       40         0
-                text0                              43EA     43EA        C         0
-                cinit                              43AC     43AC       3E         0
+                text3                              42C4     42C4       98         0
+                text2                              40B2     40B2      212         0
+                text1                              435C     435C       40         0
+                text0                              43DA     43DA        C         0
+                cinit                              439C     439C       3E         0
                 _seg_code_text                      200      200        4         0
-                idataCOMRAM                        43F6     43F6        2         0
+                idataCOMRAM                        43E6     43E6        2         0
 
         CLASS   CONST          
 
@@ -184,7 +184,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 bssCOMRAM                      000001  000010  000011         1       1  COMRAM  
                 _seg_code_text                 000200  000004  000204       100       0  CODE    
                 smallconst                     002000  000002  002002      1000       0  SMALLCON
-                ivt0x4008                      004008  0003F0  0043F8      2004       0  CODE    
+                ivt0x4008                      004008  0003E0  0043E8      2004       0  CODE    
 
 
 UNUSED ADDRESS RANGES
@@ -227,21 +227,21 @@ UNUSED ADDRESS RANGES
         CODE             000004-0001FF              1FC
                          000204-001FFF             1DFC
                          002002-004007             2006
-                         0043F8-01FFFF            1BC08
+                         0043E8-01FFFF            1BC18
         COMRAM           000011-00005F               4F
         CONST            000004-0001FF              1FC
                          000204-001FFF             1DFC
                          002002-004007             2006
-                         0043F8-01FFFF            1BC08
+                         0043E8-01FFFF            1BC18
         EEDATA           310000-3103FF              400
         IDLOC            200000-20000F               10
         MEDIUMCONST      002002-004007             2006
-                         0043F8-00FFFF             BC08
+                         0043E8-00FFFF             BC18
                          012000-01FFFF             E000
         RAM              000060-001FFF              100
         SFR              003800-003FFF              100
         SMALLCONST       002002-004007              100
-                         0043F8-00FFFF              100
+                         0043E8-00FFFF              100
                          012000-01FFFF              100
 
                                   Symbol Table
@@ -253,7 +253,7 @@ IVTBASEU                 (abs)          003FD7
 _ANSELA                  (abs)          003A40
 _ANSELB                  (abs)          003A50
 _ANSELD                  (abs)          003A70
-_INT0_ISR                text3          0042D4
+_INT0_ISR                text3          0042C4
 _INTCON0bits             (abs)          003FD2
 _IPR1bits                (abs)          003981
 _IVTBASEH                (abs)          003FD6
@@ -266,7 +266,6 @@ _PIE1bits                (abs)          003991
 _PIR1bits                (abs)          0039A1
 _PIR5bits                (abs)          0039A5
 _PORTA                   (abs)          003FCA
-_PORTAbits               (abs)          003FCA
 _PORTB                   (abs)          003FCB
 _PORTBbits               (abs)          003FCB
 _PORTD                   (abs)          003FCD
@@ -352,7 +351,7 @@ __Hreset_vec             reset_vec      000004
 __Hrparam                rparam         000000
 __Hsfr                   sfr            000000
 __Hsmallconst            smallconst     002002
-__Hspace_0               (abs)          0043F8
+__Hspace_0               (abs)          0043E8
 __Hspace_1               (abs)          000011
 __Hspace_2               (abs)          000000
 __Hspace_4               (abs)          60000A
@@ -454,7 +453,7 @@ __Ltext0                 text0          000000
 __Ltext1                 text1          000000
 __Ltext2                 text2          000000
 __Ltext3                 text3          000000
-__S0                     (abs)          0043F8
+__S0                     (abs)          0043E8
 __S1                     (abs)          000011
 __S4                     (abs)          000000
 __S5                     (abs)          000000
@@ -473,39 +472,39 @@ ___stack_hi              stack          000000
 ___stack_lo              stack          000000
 __accesstop              (abs)          000060
 __activetblptr           (abs)          000002
-__end_of_INT0_ISR        text3          00436C
-__end_of__initialization cinit          0043E0
-__end_of_check           text2          0042D4
-__end_of_initialize      text1          0043AC
-__end_of_main            text0          0043F6
+__end_of_INT0_ISR        text3          00435C
+__end_of__initialization cinit          0043D0
+__end_of_check           text2          0042C4
+__end_of_initialize      text1          00439C
+__end_of_main            text0          0043E6
 __end_of_seg_code        _seg_code_text 000204
-__initialization         cinit          0043AC
+__initialization         cinit          00439C
 __mediumconst            smallconst     002000
 __p_seg_code_text        _seg_code_text 000200
 __pbssCOMRAM             bssCOMRAM      000001
-__pcinit                 cinit          0043AC
+__pcinit                 cinit          00439C
 __pcstackCOMRAM          cstackCOMRAM   000009
 __pdataCOMRAM            dataCOMRAM     00000F
-__pidataCOMRAM           idataCOMRAM    0043F6
+__pidataCOMRAM           idataCOMRAM    0043E6
 __pivt0x4008             ivt0x4008      004008
 __psmallconst            smallconst     002000
-__ptext0                 text0          0043EA
-__ptext1                 text1          00436C
+__ptext0                 text0          0043DA
+__ptext1                 text1          00435C
 __ptext2                 text2          0040B2
-__ptext3                 text3          0042D4
+__ptext3                 text3          0042C4
 __ramtop                 ramtop         002000
 __smallconst             smallconst     002000
 _check                   text2          0040B2
 _code                    dataCOMRAM     00000F
 _count                   bssCOMRAM      000005
-_initialize              text1          00436C
+_initialize              text1          00435C
 _input                   bssCOMRAM      000007
-_main                    text0          0043EA
+_main                    text0          0043DA
 _seg_code                _seg_code_text 000200
 _seg_code_absaddr        (abs)          000200
 _x                       bssCOMRAM      000003
 _y                       bssCOMRAM      000001
-end_of_initialization    cinit          0043E0
+end_of_initialization    cinit          0043D0
 intlevel0                text           000000
 intlevel1                text           000000
 intlevel2                text           000000
@@ -517,31 +516,31 @@ ivt0x4008_undefint       ivt0x4008      0040AC
 stackhi                  (abs)          000000
 stacklo                  (abs)          000000
 start                    init           0040AE
-start_initialization     cinit          0043AC
+start_initialization     cinit          00439C
 
 
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 ./functions.h
-		_check         		CODE           	40B2	0000	546
-		_INT0_ISR      		CODE           	42D4	0000	152
+		_check         		CODE           	40B2	0000	530
+		_INT0_ISR      		CODE           	42C4	0000	152
 
-./functions.h estimated size: 698
+./functions.h estimated size: 682
 
 ./Initialize.h
-		_initialize    		CODE           	436C	0000	64
+		_initialize    		CODE           	435C	0000	64
 
 ./Initialize.h estimated size: 64
 
 shared
 		_seg_code      		CODE           	0200	0000	4
-		__initialization		CODE           	43AC	0000	52
+		__initialization		CODE           	439C	0000	52
 
 shared estimated size: 56
 
 SensorsMain.c
-		_main          		CODE           	43EA	0000	12
+		_main          		CODE           	43DA	0000	12
 
 SensorsMain.c estimated size: 12
 

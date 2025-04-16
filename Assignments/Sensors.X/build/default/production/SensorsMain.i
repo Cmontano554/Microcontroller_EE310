@@ -7,7 +7,7 @@
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "SensorsMain.c" 2
-# 10 "SensorsMain.c"
+# 13 "SensorsMain.c"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdio.h" 1 3
 
 
@@ -178,7 +178,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 11 "SensorsMain.c" 2
+# 14 "SensorsMain.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdlib.h" 1 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdlib.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 1 3
@@ -256,7 +256,7 @@ typedef struct { unsigned int quot, rem; } udiv_t;
 typedef struct { unsigned long quot, rem; } uldiv_t;
 udiv_t udiv (unsigned int, unsigned int);
 uldiv_t uldiv (unsigned long, unsigned long);
-# 12 "SensorsMain.c" 2
+# 15 "SensorsMain.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -27016,7 +27016,7 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
-# 13 "SensorsMain.c" 2
+# 16 "SensorsMain.c" 2
 # 1 "./Config.h" 1
 # 11 "./Config.h"
 #pragma config FEXTOSC = LP
@@ -27067,7 +27067,7 @@ unsigned char __t3rd16on(void);
 
 
 #pragma config CP = OFF
-# 14 "SensorsMain.c" 2
+# 17 "SensorsMain.c" 2
 # 1 "./Initialize.h" 1
 
 
@@ -27124,7 +27124,7 @@ void initialize(void){
     WPUB=0b00100001;
     return;
 }
-# 15 "SensorsMain.c" 2
+# 18 "SensorsMain.c" 2
 # 1 "./functions.h" 1
 
 
@@ -27133,7 +27133,7 @@ void initialize(void){
 
 
 
-int code = 21;
+int code = 0x21;
 int input = 0x00;
 int count = 0x00;
 const char seg_code[] __attribute__((address(0x200))) = {0x3F, 0x06, 0x5B, 0x4F};
@@ -27148,13 +27148,13 @@ void __attribute__((picinterrupt(("irq(8),base(0x4008)")))) INT0_ISR(void) {
 
 
         for (int i = 0; i < 2; i++) {
-             PORTAbits.RA1 = 1;
+             PORTBbits.RB4 = 1;
             _delay((unsigned long)((200)*(4000000/4000.0)));
-            PORTAbits.RA1 = 0;
+            PORTBbits.RB4 = 0;
             _delay((unsigned long)((500)*(4000000/4000.0)));
-            PORTAbits.RA1 = 1;
+            PORTBbits.RB4 = 1;
             _delay((unsigned long)((100)*(4000000/4000.0)));
-            PORTAbits.RA1 = 0;
+            PORTBbits.RB4 = 0;
             _delay((unsigned long)((600)*(4000000/4000.0)));
 
 
@@ -27180,7 +27180,7 @@ void check(void) {
         }
         if (PORTBbits.RB5== 0) {
             x = x + 1;
-            input = input + ((count-1)*10);
+            input = input + (count*16);
             count = 0xFF;
 
         }
@@ -27189,7 +27189,7 @@ void check(void) {
 
     }
         _delay((unsigned long)((1000)*(4000000/4000.0)));
-        count = 0;
+        count = 0x00;
         while ( y < 1){
         if (PORTBbits.RB2 == 0){
             count = count + 1;
@@ -27198,9 +27198,9 @@ void check(void) {
             count = 0;
             }
         }
-        if (PORTBbits.RB5== 0) {
+        if (PORTBbits.RB5 == 0) {
             y = y + 1;
-            input = input + (count-1);
+            input = input + count;
             count = 0xFF;
 
         }
@@ -27218,7 +27218,7 @@ void check(void) {
         PORTBbits.RB4 = 0;
     }
 }
-# 16 "SensorsMain.c" 2
+# 19 "SensorsMain.c" 2
 
 
 

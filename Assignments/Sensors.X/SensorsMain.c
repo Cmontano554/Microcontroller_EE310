@@ -5,6 +5,9 @@
  * Created on April 14, 2025, 9:01 PM
  * Versions:
  *          1.0 Created Header Files
+ *          1.1 First Attempt of Photoresistors
+ *          1.2 Code Works With LED's Instead of Buzzer and Motor for testing
+ *              Sensitivity of photoresistors may be hardware issue
  */
 
 #include <stdio.h>

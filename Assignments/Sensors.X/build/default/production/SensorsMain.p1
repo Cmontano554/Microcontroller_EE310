@@ -108,22 +108,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _WPUB `Vuc ~T0 @X0 0 e@14929 ]
 [t ~ __interrupt . k ]
 [t T1 __interrupt irq ( 8 ) base ( 16392 ) ]
-"46762
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc/pic18f47k42.h: 46762:     struct {
-[s S2130 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2130 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
-"46761
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc/pic18f47k42.h: 46761: typedef union {
-[u S2129 `S2130 1 ]
-[n S2129 . . ]
-"46773
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc/pic18f47k42.h: 46773: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x3FCA)));
-[v _PORTAbits `VS2129 ~T0 @X0 0 e@16330 ]
-[v F526 `(v ~T0 @X0 1 tf1`ul ]
-"20 C:\Program Files\Microchip\xc8\v3.00\pic\include/builtins.h
-[v __delay `JF526 ~T0 @X0 0 e ]
-[p i __delay ]
-"46824 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc/pic18f47k42.h
+"46824
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc/pic18f47k42.h: 46824:     struct {
 [s S2132 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2132 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
@@ -134,9 +119,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "46835
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc/pic18f47k42.h: 46835: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x3FCB)));
 [v _PORTBbits `VS2131 ~T0 @X0 0 e@16331 ]
+[v F526 `(v ~T0 @X0 1 tf1`ul ]
+"20 C:\Program Files\Microchip\xc8\v3.00\pic\include/builtins.h
+[v __delay `JF526 ~T0 @X0 0 e ]
+[p i __delay ]
 [p mainexit ]
-"21 SensorsMain.c
-[; ;SensorsMain.c: 21: void initialize(void);
+"24 SensorsMain.c
+[; ;SensorsMain.c: 24: void initialize(void);
 [v _initialize `(v ~T0 @X0 0 ef ]
 "250 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc/pic18f47k42.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc/pic18f47k42.h: 250: __asm("STATUS_CSHAD equ 03880h");
@@ -2514,10 +2503,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2246 ]
 }
 "8 ./functions.h
-[; ;./functions.h: 8: int code = 21;
+[; ;./functions.h: 8: int code = 0x21;
 [v _code `i ~T0 @X0 1 e ]
 [i _code
--> 21 `i
+-> 33 `i
 ]
 "9
 [; ;./functions.h: 9: int input = 0x00;
@@ -2575,26 +2564,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2249 ]
 {
 "23
-[; ;./functions.h: 23:              PORTAbits.RA1 = 1;
-[e = . . _PORTAbits 0 1 -> -> 1 `i `uc ]
+[; ;./functions.h: 23:              PORTBbits.RB4 = 1;
+[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 "24
 [; ;./functions.h: 24:             _delay((unsigned long)((200)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "25
-[; ;./functions.h: 25:             PORTAbits.RA1 = 0;
-[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+[; ;./functions.h: 25:             PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
 "26
 [; ;./functions.h: 26:             _delay((unsigned long)((500)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "27
-[; ;./functions.h: 27:             PORTAbits.RA1 = 1;
-[e = . . _PORTAbits 0 1 -> -> 1 `i `uc ]
+[; ;./functions.h: 27:             PORTBbits.RB4 = 1;
+[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 "28
 [; ;./functions.h: 28:             _delay((unsigned long)((100)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "29
-[; ;./functions.h: 29:             PORTAbits.RA1 = 0;
-[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+[; ;./functions.h: 29:             PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
 "30
 [; ;./functions.h: 30:             _delay((unsigned long)((600)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 600 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
@@ -2666,8 +2655,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./functions.h: 54:             x = x + 1;
 [e = _x + _x -> 1 `i ]
 "55
-[; ;./functions.h: 55:             input = input + ((count-1)*10);
-[e = _input + _input * - _count -> 1 `i -> 10 `i ]
+[; ;./functions.h: 55:             input = input + (count*16);
+[e = _input + _input * _count -> 16 `i ]
 "56
 [; ;./functions.h: 56:             count = 0xFF;
 [e = _count -> 255 `i ]
@@ -2690,7 +2679,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./functions.h: 63:         _delay((unsigned long)((1000)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "64
-[; ;./functions.h: 64:         count = 0;
+[; ;./functions.h: 64:         count = 0x00;
 [e = _count -> 0 `i ]
 "65
 [; ;./functions.h: 65:         while ( y < 1){
@@ -2723,15 +2712,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 2262 ]
 "73
-[; ;./functions.h: 73:         if (PORTBbits.RB5== 0) {
+[; ;./functions.h: 73:         if (PORTBbits.RB5 == 0) {
 [e $ ! == -> . . _PORTBbits 0 5 `i -> 0 `i 2264  ]
 {
 "74
 [; ;./functions.h: 74:             y = y + 1;
 [e = _y + _y -> 1 `i ]
 "75
-[; ;./functions.h: 75:             input = input + (count-1);
-[e = _input + _input - _count -> 1 `i ]
+[; ;./functions.h: 75:             input = input + count;
+[e = _input + _input _count ]
 "76
 [; ;./functions.h: 76:             count = 0xFF;
 [e = _count -> 255 `i ]
@@ -2789,22 +2778,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2252 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"23 SensorsMain.c
-[; ;SensorsMain.c: 23: void main (void) {
+"26 SensorsMain.c
+[; ;SensorsMain.c: 26: void main (void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"25
-[; ;SensorsMain.c: 25:     initialize();
-[e ( _initialize ..  ]
-"26
-[; ;SensorsMain.c: 26:     check();
-[e ( _check ..  ]
-"27
-[; ;SensorsMain.c: 27:     return;
-[e $UE 2267  ]
 "28
-[; ;SensorsMain.c: 28: }
+[; ;SensorsMain.c: 28:     initialize();
+[e ( _initialize ..  ]
+"29
+[; ;SensorsMain.c: 29:     check();
+[e ( _check ..  ]
+"30
+[; ;SensorsMain.c: 30:     return;
+[e $UE 2267  ]
+"31
+[; ;SensorsMain.c: 31: }
 [e :UE 2267 ]
 }

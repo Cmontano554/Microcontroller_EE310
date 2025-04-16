@@ -5,7 +5,7 @@
 #define _XTAL_FREQ 4000000
 #define FCY     _XTAL_FREQ/4
 
-int code = 21; // The secret code
+int code = 0x21; // The secret code
 int input = 0x00;
 int count = 0x00;
 const char seg_code[] __at(0x200) = {0x3F, 0x06, 0x5B, 0x4F};
@@ -20,13 +20,13 @@ void __interrupt(irq(IRQ_INT0),base(0x4008)) INT0_ISR(void) {
        
                 
         for (int i = 0; i < 2; i++) { 
-             PORTAbits.RA1 = 1;
+             PORTBbits.RB4 = 1;
             __delay_ms(200);
-            PORTAbits.RA1 = 0;
+            PORTBbits.RB4 = 0;
             __delay_ms(500);
-            PORTAbits.RA1 = 1;
+            PORTBbits.RB4 = 1;
             __delay_ms(100);
-            PORTAbits.RA1 = 0;
+            PORTBbits.RB4 = 0;
             __delay_ms(600);
             
         
@@ -52,7 +52,7 @@ void check(void) {
         }
         if (PORTBbits.RB5== 0) {
             x = x + 1;
-            input = input + ((count-1)*10);
+            input = input + (count*16);
             count = 0xFF;
             
         }
@@ -61,7 +61,7 @@ void check(void) {
                 
     }
         __delay_ms(1000);
-        count = 0;
+        count = 0x00;
         while ( y < 1){
         if (PORTBbits.RB2 == 0){
             count = count + 1;
@@ -70,9 +70,9 @@ void check(void) {
             count = 0;
             }
         }
-        if (PORTBbits.RB5== 0) {
+        if (PORTBbits.RB5 == 0) {
             y = y + 1;
-            input = input + (count-1);
+            input = input + count;
             count = 0xFF;
             
         }
